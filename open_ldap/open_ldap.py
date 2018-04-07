@@ -4,6 +4,7 @@ import string
 import random
 
 from notification.send_notify import Email
+from mysql.database import Database
 
 class OpenLdap(object):
 
@@ -21,10 +22,12 @@ class OpenLdap(object):
         ldap_base = "dc="+self.dc+",dc="+self.dc_final
         query = "(uid=TLegal)"
         result = conn.search_s(ldap_base, ldap.SCOPE_SUBTREE, query)
-        # print result
+        print result
         return conn
 
     def add_ldap_user(self,ou,dicionario,conn):
+        # db = Database(host="",user="",password="",db="")
+
         for nome, sobrenome, email in zip(dicionario["Nome"],dicionario["Sobrenome"],dicionario["Email"]):
             chars = string.letters + string.digits + string.punctuation
             pwdSize = 20
@@ -50,6 +53,9 @@ class OpenLdap(object):
                 e = Email("","")
                 result = conn.add_s(dn, ldap.modlist.addModlist(mod))
                 e.send_email(password, uid, email)
+                #Encrypt Password with MD5
+
+                # db.inserting_users(nome, sobrenome, password, state, uid)
                 print result
             except Exception as e:
                 print e

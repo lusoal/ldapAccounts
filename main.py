@@ -1,8 +1,9 @@
 from open_ldap.open_ldap import OpenLdap
 from archives.read_csv import Csv
 
+#set environment vairables for server details
 def main():
-    oldap = OpenLdap("","","","","")
+    oldap = OpenLdap("","Manager","teste","com","123456")
     conn = oldap.create_connection()
 
     csv = Csv("")

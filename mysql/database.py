@@ -20,10 +20,10 @@ class Database(object):
         except Exception as e:
             return e
 
-    def inserting_users(self, nome, sobrenome, password, state, uid):
-        session = connect_to_db()
+    def inserting_users(self, nome, sobrenome, password, email, uid):
+        session = self.connect_to_db()
         if session:
-            insert = 'INSERT INTO usuarios(uid, nome, sobrenome, password, state) VALUES('+'"'+uid+'","'+nome+'","'+sobrenome+'","'+password+'","'+state+'")'
+            insert = 'INSERT INTO usuarios(uid, nome, sobrenome, password, email) VALUES('+'"'+uid+'","'+nome+'","'+sobrenome+'","'+password+'","'+email+'")'
             try:
                 result_proxy = session.execute(insert)
                 session.commit()

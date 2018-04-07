@@ -1,0 +1,20 @@
+#Database Config
+host_db = ""
+user_db = ""
+password_db = ""
+schema = ""
+
+#Email to send notification
+email_send = ""
+password_email = ""
+
+#CSV File
+csv_file = ""
+
+#LDAP Information
+orgarnization_unit = ""
+ip_server = ""
+root_user = ""
+root_password = ""
+dc_1 = ""
+dc_2 = ""
